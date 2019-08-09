@@ -29,16 +29,16 @@ class RegisterForm extends React.Component {
   //     });
   // };
 
-  render() {
+  render(props) {
     return (
       <div className='form'>
         <h1>Register Form</h1>
         <Form>
          <Field type='text' name='username' placeholder='Username' />
-         {/* {touched.username && errors.username && <p className="error">{errors.username}</p>} */}
+         {this.props.touched.username && this.props.errors.username && <p className="error">{this.props.errors.username}</p>}
 
          <Field type='password' name='password' placeholder='Password' />
-         {/* {touched.password && errors.password && <p className="error">{errors.password}</p>} */}
+         {this.props.touched.password && this.props.errors.password && <p className="error">{this.props.errors.password}</p>}
 
          <button type='submit'>Submit</button>
         </Form>
