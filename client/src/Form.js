@@ -7,27 +7,27 @@ class RegisterForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      users: {},
+      users: [],
     };
   };
 
-  // componentDidMount() {
-  //   this.fetchUsers();
-  // };
-  //
-  // fetchUsers = (event) => {
-  //   fetch('http://localhost:5000/api/restricted/data')
-  //     .then(response => {
-  //       return response.json();
-  //     })
-  //     .then(users => {
-  //       console.log('users', users)
-  //       this.setState({ users: event.target.value })
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // };
+  componentDidMount() {
+    this.fetchUsers();
+  };
+
+  fetchUsers = () => {
+    fetch('http://localhost:5000/api/restricted/data')
+      .then(response => {
+        return response.json();
+      })
+      .then(users => {
+        console.log('users', users)
+        this.setState({ users: users })
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   render(props) {
     return (
@@ -43,9 +43,9 @@ class RegisterForm extends React.Component {
          <button type='submit'>Submit</button>
         </Form>
 
-        {/* {users.map(user => (
+        {this.state.users.map(user => (
           <p key={user.id}>{user.name}</p>
-        ))} */}
+        ))}
       </div>
     );
   };
